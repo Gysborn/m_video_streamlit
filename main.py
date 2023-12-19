@@ -63,8 +63,10 @@ def get_result():
     with open('data/5_result.json', 'w') as file:
         json.dump(products_data, file, indent=4, ensure_ascii=False)
 
-
-st.button('Сбор ссылок', on_click=get_links)
+def test():
+    response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
+    st.write(response.content)
+st.button('Сбор ссылок', on_click=test)
 # st.write(headers)
 # st.button('Получить результат', on_click=get_result)
 # st.button('Конвертировать в excel', on_click=converter)
