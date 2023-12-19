@@ -5,6 +5,14 @@ from utils import *
 import streamlit as st
 
 
+def test():
+    try:
+        response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
+        st.write(response.status_code)
+    except Exception as e:
+        st.write(e)
+
+
 def get_links():
     response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
     product_ids = response.get('body').get('products')
@@ -56,19 +64,19 @@ def get_result():
         item['sale_price'] = prices.get('sale_price')
         item['bonus_rubles'] = prices.get('bonus_rubles')
         item['item_link'] = f'https://www.mvideo.ru/products/{item.get("nameTranslit")}-{product_id}'
+        cleaning(products_data, keys)
     with open('data/5_result.json', 'w') as file:
         json.dump(products_data, file, indent=4, ensure_ascii=False)
 
 
-if __name__ == '__main__':
-    with st.expander("See explanation"):
-        st.write("""
-            The chart above shows some numbers I picked for you.
-            I rolled actual dice for these, so they're *guaranteed* to
-            be random.
-        """)
-        st.image("https://static.streamlit.io/examples/dice.jpg")
+# st.balloons()
+st.button('Получить excel', on_click=converter)
 
-    st.balloons()
-    # get_links()
-    # get_result()
+# st.write(f'You wrote {} characters.')
+
+#     get_links()
+if __name__ == '__main__':
+    src = st.text_area(label='Text')
+    if src:
+        init_header(src)
+    st.button('Получить результат', on_click=get_links)
