@@ -1,5 +1,5 @@
 import json
-from config import *
+import config
 import requests
 from utils import *
 import streamlit as st
@@ -7,7 +7,7 @@ import streamlit as st
 
 def test():
     try:
-        response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
+        response = requests.get(url=config.url, params=config.params, headers=config.headers, cookies=config.cookies)
         st.write(response.text)
 
 
