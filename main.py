@@ -71,11 +71,12 @@ def get_result():
     with open('data/5_result.json', 'w') as file:
         json.dump(products_data, file, indent=4, ensure_ascii=False)
 
+src = st.text_area(label='Text')
+if src:
+    init_header(src)
+st.button('Сбор ссылок', on_click=test)
+st.button('Получить результат', on_click=get_result)
+st.button('Конвертировать в excel', on_click=get_result)
 
-if __name__ == '__main__':
-    src = st.text_area(label='Text')
-    if src:
-        init_header(src)
-    st.button('Сбор ссылок', on_click=test)
-    st.button('Получить результат', on_click=get_result)
-    st.button('Конвертировать в excel', on_click=get_result)
+
+# if __name__ == '__main__':
