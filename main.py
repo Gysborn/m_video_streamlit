@@ -6,11 +6,7 @@ import streamlit as st
 
 
 def get_links():
-    try:
-        response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
-    except Exception as e:
-        st.write(e)
-        return False
+    response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
     product_ids = response.get('body').get('products')
     with open('data/1_product_ids.json', 'w') as file:
         json.dump(product_ids, file, indent=4, ensure_ascii=False)
