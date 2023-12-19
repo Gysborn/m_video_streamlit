@@ -70,7 +70,7 @@ def get_result():
 
 
 # st.balloons()
-st.button('Получить excel', on_click=converter)
+# st.button('Получить excel', on_click=converter)
 
 # st.write(f'You wrote {} characters.')
 
@@ -79,4 +79,4 @@ if __name__ == '__main__':
     src = st.text_area(label='Text')
     if src:
         init_header(src)
-    st.button('Получить результат', on_click=get_links)
+    st.button('Получить результат', on_click=test)
