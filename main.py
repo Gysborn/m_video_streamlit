@@ -1,20 +1,21 @@
 import json
-import config
+from config import headers, cookies, json_data, params, params_price, url, url_price, url_list
 import requests
 from utils import *
 import streamlit as st
 
 
 def test():
-    try:
-        response = requests.get(url=config.url, params=config.params, headers=config.headers, cookies=config.cookies)
-        st.write(response.text)
-
-
-    except Exception as e:
-        st.write(e)
-    else:
-        st.write('good')
+    st.write(headers)
+    # try:
+    #     response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
+    #     st.write(response.text)
+    #
+    #
+    # except Exception as e:
+    #     st.write(e)
+    # else:
+    #     st.write('good')
 
 def get_links():
     response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
