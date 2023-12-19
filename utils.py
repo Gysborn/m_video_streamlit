@@ -63,9 +63,3 @@ def init_header(src):
         return False
     return True
 
-# def test():
-#     try:
-#         response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-#         st.write(response.status_code)
-#     except Exception as e:
-#         st.write(e)

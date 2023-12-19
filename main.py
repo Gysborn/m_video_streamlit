@@ -7,11 +7,12 @@ import streamlit as st
 
 def test():
     try:
-        response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-        st.write(response.status_code)
+        response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
+
     except Exception as e:
         st.write(e)
-
+    else:
+        st.write('good')
 
 def get_links():
     response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
