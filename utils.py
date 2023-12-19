@@ -1,4 +1,5 @@
 import pandas
+import streamlit
 
 keys = ["nameTranslit",
         "productType",
@@ -63,3 +64,6 @@ def init_header(src):
         return False
     return True
 
+
+def foo():
+    return 'hello world'

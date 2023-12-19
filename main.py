@@ -6,7 +6,7 @@ import streamlit as st
 
 
 def test():
-    st.write(headers)
+    st.write(foo())
 
 def get_links():
     response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
