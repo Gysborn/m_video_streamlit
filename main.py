@@ -8,8 +8,7 @@ import streamlit as st
 def test():
     try:
         response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-        st.write(response.status_code)
-        st.write(headers)
+        st.write(response)
 
 
     except Exception as e:
