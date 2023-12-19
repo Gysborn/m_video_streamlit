@@ -8,9 +8,8 @@ import streamlit as st
 def test():
     try:
         response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-        if response.status_code == 200:
-            st.write(response.status_code)
-            res = response.json()
+        st.write(response.status_code)
+        st.write(headers)
 
 
     except Exception as e:
