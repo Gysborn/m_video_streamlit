@@ -6,14 +6,7 @@ import streamlit as st
 
 
 def test():
-    try:
-        response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-        st.write(response.text)
-
-    except Exception as e:
-        st.write(e)
-    else:
-        st.write('good')
+    st.write(headers)
 
 def get_links():
     response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
@@ -72,7 +65,7 @@ def get_result():
 
 src = st.text_area(label='Text')
 if src:
-    init_header(src)
+    st.write(init_header(src))
 st.button('Сбор ссылок', on_click=test)
 st.button('Получить результат', on_click=get_result)
 st.button('Конвертировать в excel', on_click=get_result)
