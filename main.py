@@ -6,16 +6,14 @@ import streamlit as st
 
 
 def test():
-    st.write(headers)
-    # try:
-    #     response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-    #     st.write(response.text)
-    #
-    #
-    # except Exception as e:
-    #     st.write(e)
-    # else:
-    #     st.write('good')
+    try:
+        response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
+        st.write(response.text)
+
+    except Exception as e:
+        st.write(e)
+    else:
+        st.write('good')
 
 def get_links():
     response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
