@@ -1,5 +1,5 @@
 import json
-from config import headers, cookies, json_data, params, params_price, url, url_price, url_list
+from config import *
 import requests
 from utils import *
 import streamlit as st

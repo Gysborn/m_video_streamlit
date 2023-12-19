@@ -134,3 +134,5 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     'x-set-application-id': '65fa5558-59b7-47ac-99ff-dca4f1a1d18e',
 }
+def foo():
+    return 'hello world'

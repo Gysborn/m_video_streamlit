@@ -65,5 +65,3 @@ def init_header(src):
     return True
 
 
-def foo():
-    return 'hello world'
