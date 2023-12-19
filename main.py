@@ -5,6 +5,14 @@ from utils import *
 import streamlit as st
 
 
+def test():
+    try:
+        response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
+        st.write(response.status_code)
+    except Exception as e:
+        st.write(e)
+
+
 def get_links():
     response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
     product_ids = response.get('body').get('products')
@@ -65,6 +73,6 @@ if __name__ == '__main__':
     src = st.text_area(label='Text')
     if src:
         init_header(src)
-    st.button('Сбор ссылок', on_click=get_links)
+    st.button('Сбор ссылок', on_click=test)
     st.button('Получить результат', on_click=get_result)
     st.button('Конвертировать в excel', on_click=get_result)
