@@ -5,19 +5,14 @@ from utils import *
 import streamlit as st
 
 
-def test():
+def get_links():
     try:
-        response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-        st.write(response.status_code)
+        response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
+        product_ids = response.get('body').get('products')
+        with open('data/1_product_ids.json', 'w') as file:
+            json.dump(product_ids, file, indent=4, ensure_ascii=False)
     except Exception as e:
         st.write(e)
-
-
-def get_links():
-    response = requests.get(url=url, params=params, headers=headers, cookies=cookies).json()
-    product_ids = response.get('body').get('products')
-    with open('data/1_product_ids.json', 'w') as file:
-        json.dump(product_ids, file, indent=4, ensure_ascii=False)
 
     json_data['productIds'] = product_ids
     response = requests.post(url=url_list, cookies=cookies, headers=headers, json=json_data).json()
@@ -69,14 +64,10 @@ def get_result():
         json.dump(products_data, file, indent=4, ensure_ascii=False)
 
 
-# st.balloons()
-# st.button('Получить excel', on_click=converter)
-
-# st.write(f'You wrote {} characters.')
-
-#     get_links()
 if __name__ == '__main__':
     src = st.text_area(label='Text')
     if src:
         init_header(src)
-    st.button('Получить результат', on_click=test)
+    st.button('Сбор ссылок', on_click=get_links)
+    st.button('Получить результат', on_click=get_result)
+    st.button('Конвертировать в excel', on_click=get_result)
