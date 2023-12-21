@@ -11,13 +11,18 @@ st.title('Parsing m video')
 def test_proxy():
     server = "38.153.31.187:9675"
     proxies = {"http": server, "https": server}
-
     response = requests.get(
-        url=url, proxies=proxies,
-        params=params, headers=headers,
-        cookies=cookies).json()
-    product_ids = response.get('body').get('products')
-    st.write(product_ids)
+        'https://2ip.ru', proxies=proxies,)
+    st.write(response.status_code)
+    st.write(response.text)
+
+
+    # response = requests.get(
+    #     url=url, proxies=proxies,
+    #     params=params, headers=headers,
+    #     cookies=cookies).json()
+    # product_ids = response.get('body').get('products')
+    # st.write(product_ids)
 
 
 def get_links():
