@@ -1,11 +1,23 @@
 import json
 from config import *
+from headers_cookie import headers, cookies
 import requests
 from utils import *
 import streamlit as st
 
-
 st.title('Parsing m video')
+
+
+def test_proxy():
+    server = "38.153.31.187:9675"
+    proxies = {"http": server, "https": server}
+
+    response = requests.get(
+        url=url, proxies=proxies,
+        params=params, headers=headers,
+        cookies=cookies).json()
+    product_ids = response.get('body').get('products')
+    st.write(product_ids)
 
 
 def get_links():
@@ -63,10 +75,8 @@ def get_result():
     with open('data/5_result.json', 'w') as file:
         json.dump(products_data, file, indent=4, ensure_ascii=False)
 
-def test():
-    response = requests.get(url=url, params=params, headers=headers, cookies=cookies)
-    st.write(response.content)
-st.button('Сбор ссылок', on_click=test)
+
+st.button('Сбор ссылок', on_click=test_proxy)
 # st.write(headers)
 # st.button('Получить результат', on_click=get_result)
 # st.button('Конвертировать в excel', on_click=converter)
