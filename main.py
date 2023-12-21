@@ -9,7 +9,9 @@ st.title('Parsing m video')
 
 
 def test_proxy():
-    server = "38.153.31.187:9675"
+    login = '64ArEY'
+    password = 'AFHcwZ'
+    server = f"http://{login}:{password}@38.153.31.187:9675"
     proxies = {"http": server, "https": server}
     response = requests.get(
         'https://2ip.ru', proxies=proxies,)
